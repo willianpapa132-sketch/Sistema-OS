@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OS Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">OS</div>
+        <div>
+          <strong>OS Control</strong>
+          <span>Assistencia tecnica</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="cadastros" title="Cadastros">
+          <span data-icon="archive"></span>
+          Cadastros
+        </button>
+        <button class="nav-item" data-view="ordem" title="Ordem de servico">
+          <span data-icon="file-plus"></span>
+          Ordem
+        </button>
+        <button class="nav-item" data-view="triagem" title="Triagem">
+          <span data-icon="kanban"></span>
+          Triagem
+        </button>
+      </nav>
+
+      <div class="session-box">
+        <label for="apiBase">API</label>
+        <input id="apiBase" value="" placeholder="http://localhost:8080">
+        <button id="openLogin" class="ghost-btn">
+          <span data-icon="key"></span>
+          Login
+        </button>
+        <button id="logoutBtn" class="ghost-btn">
+          <span data-icon="log-out"></span>
+          Sair
+        </button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="sectionEyebrow">Cadastros</p>
+          <h1 id="sectionTitle">Central de cadastro</h1>
+        </div>
+        <div class="status-pill" id="authState">Sem login</div>
+      </header>
+
+      <section id="cadastros" class="view active">
+        <div class="content-grid">
+          <section class="panel chooser-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Selecionar cadastro</h2>
+                <p>Escolha o tipo para abrir o formulario correto.</p>
+              </div>
+            </div>
+            <div class="choice-grid" id="entityChoices"></div>
+          </section>
+
+          <section class="panel form-panel">
+            <div class="panel-head">
+              <div>
+                <h2 id="formTitle">Novo cliente</h2>
+                <p id="formSubtitle">Dados comerciais e contato.</p>
+              </div>
+              <button id="reloadCurrent" class="icon-btn" title="Atualizar lista">
+                <span data-icon="refresh"></span>
+              </button>
+            </div>
+            <form id="entityForm" class="form-grid"></form>
+          </section>
+        </div>
+
+        <section class="panel table-panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="tableTitle">Clientes cadastrados</h2>
+              <p>Registros retornados pela API.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead id="entityTableHead"></thead>
+              <tbody id="entityTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="ordem" class="view">
+        <div class="content-grid order-grid">
+          <section class="panel form-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Nova ordem de servico</h2>
+                <p>Abertura guiada com cliente, diagnostico, itens e revisao.</p>
+              </div>
+              <button id="loadRefs" class="icon-btn" title="Carregar referencias">
+                <span data-icon="refresh"></span>
+              </button>
+            </div>
+            <div class="stepper" id="orderSteps"></div>
+            <form id="orderForm" class="form-grid">
+              <div class="order-step active">
+                <label>Cliente
+                  <select name="clienteid" required></select>
+                </label>
+                <label>Tecnico
+                  <select name="tecnicoid" required></select>
+                </label>
+                <label class="wide">Equipamento
+                  <select name="equipamentoid" required></select>
+                </label>
+              </div>
+
+              <div class="order-step">
+                <label>Servico principal
+                  <select name="servicoid" required></select>
+                </label>
+                <label>Status inicial
+                  <select name="status"></select>
+                </label>
+                <label class="wide">Defeito relatado
+                  <textarea name="defeitoRelatado" rows="4" required></textarea>
+                </label>
+                <label class="wide">Observacoes
+                  <textarea name="observacoes" rows="3"></textarea>
+                </label>
+                <div class="wide item-box">
+                  <div class="item-box-head">
+                    <strong>Itens adicionais</strong>
+                    <button id="addItem" class="mini-btn" type="button">
+                      <span data-icon="plus"></span>
+                      Adicionar
+                    </button>
+                  </div>
+                  <div id="itemsList" class="items-list"></div>
+                </div>
+              </div>
+
+              <div class="order-step">
+                <label>Valor pago
+                  <input name="valorPago" type="number" min="0" step="0.01" value="0">
+                </label>
+                <div class="wide summary-panel" id="orderSummary"></div>
+              </div>
+
+              <div class="wide form-actions">
+                <button id="prevStep" class="ghost-light-btn" type="button">Voltar</button>
+                <button id="nextStep" class="primary-btn" type="button">Continuar</button>
+                <button id="submitOrder" class="primary-btn" type="submit" hidden>
+                  <span data-icon="save"></span>
+                  Abrir ordem
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section class="panel side-list">
+            <div class="panel-head">
+              <div>
+                <h2>Ultimas ordens</h2>
+                <p>Consulta rapida de acompanhamento.</p>
+              </div>
+            </div>
+            <div id="recentOrders" class="order-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="triagem" class="view">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Triagem de ordens</h2>
+              <p>Visualizacao por status operacional.</p>
+            </div>
+            <button id="refreshTriage" class="primary-btn">
+              <span data-icon="refresh"></span>
+              Atualizar
+            </button>
+          </div>
+          <div class="triage-board" id="triageBoard"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="loginDialog">
+    <form method="dialog" class="login-card" id="loginForm">
+      <div class="panel-head">
+        <div>
+          <h2>Acesso</h2>
+          <p>Use um usuario cadastrado na API.</p>
+        </div>
+        <button class="icon-btn" value="cancel" title="Fechar">
+          <span data-icon="x"></span>
+        </button>
+      </div>
+      <label>Login
+        <input name="login" autocomplete="username" required>
+      </label>
+      <label>Senha
+        <input name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button class="primary-btn" type="submit">
+        <span data-icon="key"></span>
+        Entrar
+      </button>
+    </form>
+  </dialog>
+
+  <dialog id="orderDialog">
+    <div class="details-card">
+      <div class="panel-head">
+        <div>
+          <h2>Detalhes da OS</h2>
+          <p>Dados operacionais retornados pela API.</p>
+        </div>
+        <button id="closeDetails" class="icon-btn" type="button" title="Fechar">
+          <span data-icon="x"></span>
+        </button>
+      </div>
+      <div id="orderDetails" class="details-body"></div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
