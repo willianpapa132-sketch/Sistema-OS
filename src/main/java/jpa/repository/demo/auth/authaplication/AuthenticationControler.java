@@ -7,7 +7,7 @@ import jpa.repository.demo.auth.domain.LoginResponseDTO;
 import jpa.repository.demo.auth.domain.RegistroDTO;
 import jpa.repository.demo.auth.domain.Role;
 import jpa.repository.demo.auth.domain.User;
-import jpa.repository.demo.domain.repository.UserRepository;
+import jpa.repository.demo.auth.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,8 +1,9 @@
-package jpa.repository.demo.Aplication.controler;
+package jpa.repository.demo.cliente.controler;
 
-import jpa.repository.demo.Aplication.service.ClienteService;
-import jpa.repository.demo.domain.dto.ClienteRequestDTO;
-import jpa.repository.demo.domain.dto.ClienteResponseDTO;
+import jakarta.validation.Valid;
+import jpa.repository.demo.cliente.dto.ClienteRequestDTO;
+import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
+import jpa.repository.demo.cliente.service.ClienteService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +20,12 @@ public class ClienteControler {
 
 
     @PostMapping
-    public ClienteResponseDTO cadastrar(@RequestBody ClienteRequestDTO clienteRequestDTO) {
+    public ClienteResponseDTO cadastrar(@RequestBody @Valid ClienteRequestDTO clienteRequestDTO) {
         return clienteService.salvarCliente(clienteRequestDTO);
     }
 
     @PutMapping("/atualizar/{id}")
-    public ClienteResponseDTO mudarStatus(@RequestBody ClienteRequestDTO clienteRequestDTO, @PathVariable Long id) throws Exception {
+    public ClienteResponseDTO mudarStatus(@RequestBody @Valid ClienteRequestDTO clienteRequestDTO, @PathVariable Long id) throws Exception {
         return clienteService.mudarStatusCliente(clienteRequestDTO, id);
     }
 

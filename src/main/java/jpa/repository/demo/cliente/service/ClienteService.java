@@ -1,10 +1,11 @@
-package jpa.repository.demo.Aplication.service;
+package jpa.repository.demo.cliente.service;
 
-import jpa.repository.demo.domain.dto.ClienteRequestDTO;
-import jpa.repository.demo.domain.dto.ClienteResponseDTO;
-import jpa.repository.demo.domain.entity.Cliente;
-import jpa.repository.demo.domain.repository.ClienteRepository;
+import jpa.repository.demo.cliente.entity.Cliente;
+import jpa.repository.demo.cliente.dto.ClienteRequestDTO;
+import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
+import jpa.repository.demo.cliente.repository.ClienteRepository;
 
+import jpa.repository.demo.handler.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ClienteService {
         Cliente clienteSalvo = clienteRepository.save(cliente);
         return toResponseDTO(clienteSalvo);
     }
-    public ClienteResponseDTO mudarStatusCliente(ClienteRequestDTO clienteRequestDTO, Long id)throws Exception{
+    public ClienteResponseDTO mudarStatusCliente(ClienteRequestDTO clienteRequestDTO, Long id){
         Cliente clienteLocalizado = buscarClienteId(id);
         clienteLocalizado.setAtivo(clienteRequestDTO.isAtivo());
         Cliente clienteSalvo = clienteRepository.save(clienteLocalizado);
@@ -41,11 +42,11 @@ public class ClienteService {
     }
 
 
-    public Cliente buscarClienteId (Long id)throws Exception{
-        return clienteRepository.findById(id).orElseThrow(()-> new Exception("cliente não localizado"));
+    public Cliente buscarClienteId (Long id){
+        return clienteRepository.findById(id).orElseThrow(()-> new NotFoundException("cliente não localizado"));
     }
 
-    public ClienteResponseDTO buscarCliente(Long id)throws Exception{
+    public ClienteResponseDTO buscarCliente(Long id){
         Cliente clienteLocalizado = buscarClienteId(id);
         return toResponseDTO(clienteLocalizado);
     }

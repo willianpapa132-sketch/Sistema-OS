@@ -1,6 +1,6 @@
-package jpa.repository.demo.domain.repository;
+package jpa.repository.demo.cliente.repository;
 
-import jpa.repository.demo.domain.entity.Cliente;
+import jpa.repository.demo.cliente.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 

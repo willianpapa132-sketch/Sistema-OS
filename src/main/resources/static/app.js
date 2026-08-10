@@ -816,8 +816,17 @@ async function request(path, options = {}) {
   });
   const text = await response.text();
   if (!response.ok) {
+    let message = text || `Erro ${response.status} ao acessar ${path}`;
+    if (text) {
+      try {
+        const errorBody = JSON.parse(text);
+        message = errorBody.mensagem || errorBody.message || errorBody.erro || message;
+      } catch (error) {
+        message = text;
+      }
+    }
     if (response.status === 401 || response.status === 403) throw new Error("Acesso negado. Confira login e perfil.");
-    throw new Error(text || `Erro ${response.status} ao acessar ${path}`);
+    throw new Error(message);
   }
   return text ? JSON.parse(text) : null;
 }

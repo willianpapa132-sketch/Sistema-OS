@@ -1,6 +1,6 @@
 package jpa.repository.demo.auth.authaplication;
 
-import jpa.repository.demo.domain.repository.UserRepository;
+import jpa.repository.demo.auth.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
