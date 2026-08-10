@@ -1,0 +1,168 @@
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml
+Progress (1): 249 BProgress (2): 249 B | 234 BProgress (3): 249 B | 234 B | 243 BProgress (4): 249 B | 234 B | 243 B | 255 B                                           Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 384 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 392 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml (234 B at 360 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml (243 B at 373 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml
+Progress (1): 375 BProgress (2): 375 B | 398 BProgress (3): 375 B | 398 B | 394 B                                   Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml (375 B at 9.4 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml (398 B at 8.7 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml (394 B at 8.2 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 242 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml (242 B at 5.3 kB/s)
+Progress (1): 3.1 kBProgress (1): 7.7 kBProgress (2): 7.7 kB | 4.6 kBProgress (2): 7.7 kB | 9.7 kBProgress (2): 12 kB | 9.7 kB Progress (2): 17 kB | 9.7 kBProgress (2): 17 kB | 14 kB Progress (2): 20 kB | 14 kBProgress (2): 21 kB | 14 kB                           Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 kB at 298 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 kB at 237 kB/s)
+[INFO] 
+[INFO] ------------------------< jpa.repository:demo >-------------------------
+[INFO] Building  0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:4.0.6:run (default-cli) > test-compile @ demo >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ demo ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ demo ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ demo ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ demo ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:4.0.6:run (default-cli) < test-compile @ demo <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.0.6:run (default-cli) @ demo ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-07-09T13:31:13.707-03:00  INFO 35768 --- [demo] [           main] jpa.repository.demo.AprendendoJpa        : Starting AprendendoJpa using Java 21.0.10 with PID 35768 (C:\Users\willi\Downloads\jpa\demo\target\classes started by willi in C:\Users\willi\Downloads\jpa\demo)
+2026-07-09T13:31:13.724-03:00  INFO 35768 --- [demo] [           main] jpa.repository.demo.AprendendoJpa        : No active profile set, falling back to 1 default profile: "default"
+2026-07-09T13:31:16.371-03:00  INFO 35768 --- [demo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-09T13:31:16.492-03:00  INFO 35768 --- [demo] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 8 JPA repository interfaces.
+2026-07-09T13:31:17.425-03:00  INFO 35768 --- [demo] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-07-09T13:31:17.448-03:00  INFO 35768 --- [demo] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-09T13:31:17.448-03:00  INFO 35768 --- [demo] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-07-09T13:31:17.556-03:00  INFO 35768 --- [demo] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3412 ms
+2026-07-09T13:31:17.784-03:00  INFO 35768 --- [demo] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-09T13:31:17.899-03:00  INFO 35768 --- [demo] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-07-09T13:31:18.670-03:00  INFO 35768 --- [demo] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-09T13:31:18.738-03:00  INFO 35768 --- [demo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-09T13:31:19.187-03:00  INFO 35768 --- [demo] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@69c1ea07
+2026-07-09T13:31:19.191-03:00  INFO 35768 --- [demo] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-09T13:31:19.278-03:00  WARN 35768 --- [demo] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-09T13:31:19.343-03:00  INFO 35768 --- [demo] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/OS]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.3
+	Default catalog/schema: OS/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-09T13:31:21.587-03:00  INFO 35768 --- [demo] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-09T13:31:21.717-03:00  INFO 35768 --- [demo] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-09T13:31:21.800-03:00  INFO 35768 --- [demo] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-09T13:31:22.316-03:00  INFO 35768 --- [demo] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authorizationService
+2026-07-09T13:31:22.481-03:00  WARN 35768 --- [demo] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-09T13:31:22.834-03:00  INFO 35768 --- [demo] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-07-09T13:31:23.362-03:00  INFO 35768 --- [demo] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-07-09T13:31:23.368-03:00  INFO 35768 --- [demo] [           main] jpa.repository.demo.AprendendoJpa        : Started AprendendoJpa in 11.013 seconds (process running for 11.843)
+2026-07-09T13:31:23.374-03:00  WARN 35768 --- [demo] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-07-09T13:31:23.375-03:00  WARN 35768 --- [demo] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-07-09T14:01:22.518-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m2s799ms886µs700ns).
+2026-07-09T14:07:25.540-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m2s214ms432µs300ns).
+2026-07-09T19:35:25.358-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h27m59s834ms277µs700ns).
+2026-07-09T20:21:31.388-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46m7s793ms556µs500ns).
+2026-07-09T20:26:24.652-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m22s718ms862µs100ns).
+2026-07-09T20:59:44.604-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m19s977ms105µs700ns).
+2026-07-10T08:29:29.907-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11h29m47s365ms481µs300ns).
+2026-07-10T21:22:32.969-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h5m17s290ms717µs700ns).
+2026-07-11T03:03:21.334-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h13m45s336ms239µs700ns).
+2026-07-11T07:08:32.613-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4h4m40s767ms969µs200ns).
+2026-07-11T14:09:02.780-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h58m29s68ms786µs799ns).
+2026-07-12T01:55:42.954-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11h46m40s147ms345µs101ns).
+2026-07-12T03:15:02.881-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=28m49s34ms555µs).
+2026-07-12T11:35:58.654-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8h18m54s661ms409µs100ns).
+2026-07-12T12:33:34.807-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m34s863ms866µs500ns).
+2026-07-12T23:03:41.736-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h14m31s717ms974µs400ns).
+2026-07-12T23:43:54.314-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m12s63ms665µs700ns).
+2026-07-13T03:14:10.864-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h29m46s287ms204µs900ns).
+2026-07-13T22:51:07.850-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19h34m54s681ms710µs900ns).
+2026-07-14T01:14:17.684-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h37m40s229ms44µs400ns).
+2026-07-14T13:14:28.877-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h7m38s997ms128µs500ns).
+2026-07-14T14:32:58.476-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h18m29s635ms102µs400ns).
+2026-07-14T14:42:06.415-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m37s796ms371µs600ns).
+2026-07-14T21:56:38.117-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h55m436ms107µs).
+2026-07-14T23:01:43.594-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m33s534ms559µs400ns).
+2026-07-15T21:15:21.018-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h11m21s813ms693µs900ns).
+2026-07-16T07:28:29.269-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h13m8s255ms916µs700ns).
+2026-07-16T09:21:22.180-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h52m54s770ms290µs200ns).
+2026-07-16T11:24:54.408-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h3m32s326ms148µs800ns).
+2026-07-16T16:54:28.698-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h14m33s477ms762µs500ns).
+2026-07-16T16:58:33.278-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m34s209ms886µs900ns).
+2026-07-16T17:06:47.780-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m14s502ms475µs200ns).
+2026-07-16T17:28:54.671-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m6s473ms347µs300ns).
+2026-07-17T08:16:26.264-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14h47m33s645ms860µs100ns).
+2026-07-17T08:33:44.651-03:00  INFO 35768 --- [demo] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-17T08:33:44.692-03:00  INFO 35768 --- [demo] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-17T08:33:45.501-03:00  INFO 35768 --- [demo] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 773 ms
+2026-07-17T11:59:12.796-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m11s721ms136µs500ns).
+2026-07-17T13:30:33.017-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h31m21s31ms429µs800ns).
+2026-07-17T17:22:59.452-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=32m21s454ms272µs300ns).
+2026-07-18T18:20:36.836-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d57m39s662ms234µs300ns).
+2026-07-18T19:19:24.791-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57m11s400ms775µs200ns).
+2026-07-19T16:08:22.470-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20h48m55s141ms613µs600ns).
+2026-07-21T07:03:21.714-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d14h7m688ms671µs500ns).
+2026-07-21T07:04:06.637-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45s475ms971µs500ns).
+2026-07-21T07:06:39.482-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m2s188ms237µs500ns).
+2026-07-21T07:14:59.154-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m20s32ms13µs900ns).
+2026-07-21T07:58:42.640-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m11s307ms753µs600ns).
+2026-07-21T10:43:46.613-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h45m3s716ms338µs700ns).
+2026-07-21T12:59:45.160-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h1m26s676ms585µs400ns).
+2026-07-21T13:14:38.079-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m22s338ms982µs600ns).
+2026-07-21T19:21:38.220-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h59m29s293ms840µs300ns).
+2026-07-21T19:39:44.669-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m34s894ms231µs300ns).
+2026-07-21T20:23:02.023-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m46s620ms36µs900ns).
+2026-07-21T20:41:46.343-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m14s55ms158µs500ns).
+2026-07-22T03:08:10.866-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h15m54s218ms179µs700ns).
+2026-07-22T13:16:25.124-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h4m12s675ms723µs700ns).
+2026-07-22T21:16:26.412-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h58m29s668ms984µs400ns).
+2026-07-22T22:12:46.808-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56m20s711ms642µs500ns).
+2026-07-22T23:08:46.120-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m57s834ms491µs800ns).
+2026-07-23T03:08:08.557-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h52m50s836ms886µs600ns).
+2026-07-23T13:17:17.425-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9h56m5s190ms717µs800ns).
+2026-07-23T15:23:50.036-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h5m108ms399µs499ns).
+2026-07-23T21:11:49.055-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h38m25s468ms53µs99ns).
+2026-07-23T22:14:15.587-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=32m53s527ms511µs600ns).
+2026-07-23T23:25:40.785-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51s362ms492µs500ns).
+2026-07-24T03:04:15.522-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h56m30s655ms18µs801ns).
+2026-07-24T08:29:22.221-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h19m35s231ms754µs200ns).
+2026-07-24T08:45:02.862-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m6s114ms132µs999ns).
+2026-07-24T22:37:06.144-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h50m23s438ms540µs600ns).
+2026-07-25T00:16:11.646-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39m6s580ms671µs699ns).
+2026-07-25T03:03:18.818-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h47m7s175ms499µs300ns).
+2026-07-25T07:32:17.893-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4h24m57s445ms967µs100ns).
+2026-07-25T13:03:08.910-03:00  WARN 35768 --- [demo] [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=35m45s605ms300µs600ns).
