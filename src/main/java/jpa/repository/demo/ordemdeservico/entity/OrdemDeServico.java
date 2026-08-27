@@ -30,6 +30,8 @@ public class OrdemDeServico {
     @Column(name = "os_id")
     private Long id;
 
+    private Integer numeracao;
+
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;

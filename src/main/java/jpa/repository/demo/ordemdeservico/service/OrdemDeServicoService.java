@@ -83,7 +83,7 @@ public class OrdemDeServicoService {
 
         if (ordemDeServicoRequestDTO.getItens() != null) {
             for (ItemServicoRequestDTO itemDTO : ordemDeServicoRequestDTO.getItens()) {
-                ItemServico item = itemServicoService.toEntity(itemDTO, ordemDeServico);
+                ItemServico item = itemServicoService.toEntity(itemDTO);
                 item.setValortot( item.getServico().getValor().multiply(BigDecimal.valueOf( item.getQuantidade())));
                 ordemDeServico.adicionarItem(item);
                 total = total.add(item.getValortot());
@@ -107,7 +107,7 @@ public class OrdemDeServicoService {
         BigDecimal total =BigDecimal.valueOf(0);
         if (ordemDeServicoRequestDTO.getItens() != null) {
             for (ItemServicoRequestDTO itemDTO : ordemDeServicoRequestDTO.getItens()) {
-                ItemServico item = itemServicoService.toEntity(itemDTO, orderDeServicoLocalizada);
+                ItemServico item = itemServicoService.toEntity(itemDTO);
                 item.setValortot( item.getServico().getValor().multiply(BigDecimal.valueOf( item.getQuantidade())));
                 orderDeServicoLocalizada.adicionarItem(item);
                 total = total.add( item.getValortot());

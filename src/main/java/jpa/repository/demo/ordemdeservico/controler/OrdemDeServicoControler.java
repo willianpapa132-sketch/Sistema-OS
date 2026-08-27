@@ -19,27 +19,27 @@ public class OrdemDeServicoControler {
     }
 
     @PostMapping
-    public OrdemDeServicoResponseDTO cadastrarOrdem(@RequestBody @Valid OrdemDeServicoRequestDTO ordemDeServicoRequestDTO) throws Exception {
+    public OrdemDeServicoResponseDTO cadastrarOrdem(@RequestBody @Valid OrdemDeServicoRequestDTO ordemDeServicoRequestDTO)   {
         return ordemService.salvarOrdem(ordemDeServicoRequestDTO);
     }
     @PutMapping("/atualizar/{id}")
-    public OrdemDeServicoResponseDTO atualizarOrdem(@RequestBody @Valid OrdemDeServicoRequestDTO ordemDeServicoRequestDTO,@PathVariable Long id) throws Exception {
+    public OrdemDeServicoResponseDTO atualizarOrdem(@RequestBody @Valid OrdemDeServicoRequestDTO ordemDeServicoRequestDTO,@PathVariable Long id)   {
         return  ordemService.atualizarOrdem(ordemDeServicoRequestDTO,id);
     }
     @PutMapping("/fechar/{id}")
-    public OrdemDeServicoResponseDTO fecharOrdem(@PathVariable Long id) throws Exception {
+    public OrdemDeServicoResponseDTO fecharOrdem(@PathVariable Long id)   {
         return ordemService.fecharOrdem(id);
     }
     @PutMapping("/cancelar/{id}")
-    public OrdemDeServicoResponseDTO cancelarOrdem (@PathVariable Long id) throws Exception {
+    public OrdemDeServicoResponseDTO cancelarOrdem (@PathVariable Long id)   {
         return ordemService.cancelarOrdem(id);
     }
     @GetMapping("/buscar/{id}")
-    public OrdemDeServicoResponseDTO buscarOrdem(@PathVariable Long id) throws Exception {
+    public OrdemDeServicoResponseDTO buscarOrdem(@PathVariable Long id)  {
         return ordemService.buscarOrdem(id);
     }
     @GetMapping
-    public List<OrdemDeServicoResponseDTO> listarOrdem() throws Exception {
+    public List<OrdemDeServicoResponseDTO> listarOrdem()   {
         return ordemService.listarTodasOrdem();
     }
 

@@ -16,9 +16,9 @@ public class ItemServicoService {
     @Autowired
     ServicoService servicoService;
 
-    public ItemServico toEntity(ItemServicoRequestDTO itemServicoRequestDTO, OrdemDeServico ordemDeServico)  {
+    public ItemServico toEntity(ItemServicoRequestDTO itemServicoRequestDTO)  {
         return new ItemServico(
-                ordemDeServico,servicoService.buscarServicoId(itemServicoRequestDTO.getServicoid()),
+                servicoService.buscarServicoId(itemServicoRequestDTO.getServicoid()),
                 itemServicoRequestDTO.getQuantidade(),BigDecimal.valueOf(0)
         );
     }

@@ -44,8 +44,8 @@ public class ItemServico {
     private BigDecimal valortot;
 
 
-    public ItemServico(OrdemDeServico ordemDeServico, Servico servico, int quantidade, BigDecimal valortot) {
-        this.ordemDeServico = ordemDeServico;
+    public ItemServico( Servico servico, int quantidade, BigDecimal valortot) {
+
         this.quantidade = quantidade;
         this.valortot = valortot;
         this.servico = servico;
