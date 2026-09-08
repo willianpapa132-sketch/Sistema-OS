@@ -61,6 +61,7 @@ public class OrdemDeServicoService {
         if (ordemDeServico.getCliente().getAtivo() == false) {
             throw new BusinessException("Esse cliente esta DESATIVADO");
         }
+
     }
 
 

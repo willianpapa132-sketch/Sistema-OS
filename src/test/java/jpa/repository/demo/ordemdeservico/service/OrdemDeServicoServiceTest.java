@@ -5,6 +5,7 @@ import jpa.repository.demo.cliente.service.ClienteService;
 import jpa.repository.demo.equipamento.entity.Equipamento;
 import jpa.repository.demo.equipamento.repository.EquipamentoRepository;
 import jpa.repository.demo.equipamento.service.EquipamentoService;
+import jpa.repository.demo.handler.BusinessException;
 import jpa.repository.demo.itemservico.dto.ItemServicoRequestDTO;
 import jpa.repository.demo.itemservico.entity.ItemServico;
 import jpa.repository.demo.itemservico.service.ItemServicoService;
@@ -16,21 +17,19 @@ import jpa.repository.demo.ordemdeservico.repository.OrdemDeServicoRepository;
 import jpa.repository.demo.servico.entity.Servico;
 import jpa.repository.demo.tecnico.entity.Tecnico;
 import jpa.repository.demo.tecnico.service.TecnicoService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrdemDeServicoServiceTest {
@@ -97,7 +96,7 @@ class OrdemDeServicoServiceTest {
         Servico servico1= new Servico();
         servico1.setId(1L);
         servico1.setDescricao("refinamento motor");
-        servico1.setValor(BigDecimal.valueOf(2000,70));
+        servico1.setValor(new BigDecimal("2000.70"));
         return servico1;
         
     }
@@ -105,7 +104,7 @@ class OrdemDeServicoServiceTest {
         Servico servico1= new Servico();
         servico1.setId(2L);
         servico1.setDescricao("mangueira arrefecimento ");
-        servico1.setValor(BigDecimal.valueOf(100,70));
+        servico1.setValor(new BigDecimal("100.70"));
         return servico1;
 
     }
@@ -128,6 +127,7 @@ class OrdemDeServicoServiceTest {
 
 
     @Test
+    @DisplayName("teste padrão de uma criação de OS sem quebra e sem lançamento de Excessão")
     void deveSalvarOrdem() {
 
         //criação das entity
@@ -141,10 +141,7 @@ class OrdemDeServicoServiceTest {
         List<ItemServicoRequestDTO> itemServicoRequestDTOS = criarLista();
         OrdemDeServicoRequestDTO ordemDeServicoRequestDTO = criarOrdem();
         ordemDeServicoRequestDTO.setItens(itemServicoRequestDTOS);
-        ordemDeServicoRequestDTO.setStatus(StatusOS.EM_ANDAMENTO);
 
-        when(equipamentoRepository.save(any(Equipamento.class)))
-                .thenAnswer(invocation -> invocation.getArgument(0));
         when(clienteService.buscarClienteId(1L)).thenReturn(cliente);
         when(equipamentoService.buscarEquipamentoId(1L)).thenReturn(equipamento);
         when(tecnicoService.buscarTecnicoId(1L)).thenReturn(tecnico);
@@ -175,7 +172,7 @@ class OrdemDeServicoServiceTest {
 
 
 
-        //metodo sendo executado e retornando para o dto:
+        //metodo sendo executado e retornando para o dto sem cliente tecnico e equipamento,não foi mocado o toResponse:
         OrdemDeServicoResponseDTO resultado =
                 ordemDeServicoService.salvarOrdem(ordemDeServicoRequestDTO);
 
@@ -184,10 +181,68 @@ class OrdemDeServicoServiceTest {
         ArgumentCaptor<OrdemDeServico> captor =
                 ArgumentCaptor.forClass(OrdemDeServico.class);
 
+
+        verify(clienteService).buscarClienteId(1L);
+        verify(equipamentoService).buscarEquipamentoId(1L);
+        verify(tecnicoService).buscarTecnicoId(1L);
+        verify(itemServicoService).toEntity(itemServicoRequestDTO1);
+        verify(itemServicoService).toEntity(itemServicoRequestDTO2);
+        verify(ordemDeServicoRepository).save(any(OrdemDeServico.class));
         verify(ordemDeServicoRepository).save(captor.capture());
+
+
 
         OrdemDeServico ordemSalva = captor.getValue();
 
-        assertTrue(ordemSalva.getEquipamento().getEmmanutencao());
+        assertFalse(ordemSalva.getEquipamento().getEmmanutencao());
+
+        assertEquals(
+                0,
+                new BigDecimal("4102.10")
+                        .compareTo(resultado.getValorTotalOrdem())
+        );
+        assertEquals("willian",ordemSalva.getCliente().getNome());
+        verify(equipamentoRepository,never()).save(any(Equipamento.class));
+    }
+    @Test
+    void deveQuebrarNoValidation(){
+        Cliente cliente = criarCliente();
+        Equipamento equipamento = criarEquipamento();
+        Tecnico tecnico = criarTecnico();
+        Servico servico1 = criarServico1();
+        Servico servico2 = criarServico2();
+
+        List<ItemServicoRequestDTO> itemServicoRequestDTOS = criarLista();
+        OrdemDeServicoRequestDTO ordemDeServicoRequestDTO = criarOrdem();
+        ordemDeServicoRequestDTO.setItens(itemServicoRequestDTOS);
+        ordemDeServicoRequestDTO.setStatus(StatusOS.EM_ANDAMENTO);
+
+        ItemServicoRequestDTO itemServicoRequestDTO1 = itemServicoRequestDTOS.get(0);
+        ItemServicoRequestDTO itemServicoRequestDTO2 = itemServicoRequestDTOS.get(1);
+
+        ItemServico itemServico1 = new ItemServico();
+        itemServico1.setId(1L);
+        itemServico1.setServico(servico1);
+        itemServico1.setQuantidade(itemServicoRequestDTO1.getQuantidade());
+
+        ItemServico itemServico2= new ItemServico();
+        itemServico2.setId(2L);
+        itemServico2.setServico(servico2);
+        itemServico2.setQuantidade(itemServicoRequestDTO2.getQuantidade());
+
+
+
+
+        when(clienteService.buscarClienteId(1L)).thenReturn(null);
+
+        verify(ordemDeServicoRepository, never())
+                .save(any(OrdemDeServico.class));
+        verify(equipamentoRepository, never()).save(any(Equipamento.class));
+        BusinessException exception=
+                assertThrows(BusinessException.class,() -> ordemDeServicoService.salvarOrdem(ordemDeServicoRequestDTO));
+
+        assertEquals("nao pode ser feito uma ordem de servico sem CLIENTE informado", exception.getMessage());
+
+
     }
 }
