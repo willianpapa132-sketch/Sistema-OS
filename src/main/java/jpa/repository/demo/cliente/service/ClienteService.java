@@ -4,13 +4,11 @@ import jpa.repository.demo.cliente.entity.Cliente;
 import jpa.repository.demo.cliente.dto.ClienteRequestDTO;
 import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
 import jpa.repository.demo.cliente.repository.ClienteRepository;
-
 import jpa.repository.demo.handler.BusinessException;
 import jpa.repository.demo.handler.NotFoundException;
 import jpa.repository.demo.ordemdeservico.entity.OrdemDeServico;
 import jpa.repository.demo.ordemdeservico.repository.OrdemDeServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

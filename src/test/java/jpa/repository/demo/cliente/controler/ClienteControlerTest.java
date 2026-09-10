@@ -5,6 +5,7 @@ import jpa.repository.demo.auth.domain.UserRepository;
 import jpa.repository.demo.cliente.dto.ClienteRequestDTO;
 import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
 import jpa.repository.demo.cliente.service.ClienteService;
+import jpa.repository.demo.handler.BusinessException;
 import jpa.repository.demo.handler.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import tools.jackson.databind.ObjectMapper;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -113,8 +113,11 @@ class ClienteControlerTest {
     }
 
 
-
-
+    //
+    //
+    //
+    //
+    //
 
     //testes do put
 
@@ -123,7 +126,7 @@ class ClienteControlerTest {
     public void deveAtualizarStatusRetornar200() throws Exception {
 
 
-        when(clienteService.mudarStatusCliente(any(ClienteRequestDTO.class), anyLong())).thenReturn(clienteResponseDTO);
+        when(clienteService.mudarStatusCliente(any(ClienteRequestDTO.class), eq(1L))).thenReturn(clienteResponseDTO);
 
         mockMvc.perform(
                 put("/cliente/atualizar/{id}",1L)
@@ -132,11 +135,54 @@ class ClienteControlerTest {
         )
                 .andExpect(status().isOk());
 
-        verify(clienteService).mudarStatusCliente(any(ClienteRequestDTO.class), anyLong());
+        verify(clienteService).mudarStatusCliente(any(ClienteRequestDTO.class), eq(1L));
+    }
+    @Test
+    @DisplayName("deve lançar o Bussines exception no service")
+    public void deveBussinesExceptionNoService()throws Exception {
+
+        when(clienteService.mudarStatusCliente(any(ClienteRequestDTO.class), eq(1L)))
+                .thenThrow(new BusinessException("cliente tem OS em seu nome"));
+
+        mockMvc.perform(
+                put("/cliente/atualizar/{id}",1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(clienteRequestDTO))
+        )
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.mensagem").value("cliente tem OS em seu nome"));
+
+        verify(clienteService).mudarStatusCliente(any(ClienteRequestDTO.class), eq(1L));
+        assertTrue(clienteRequestDTO.isAtivo());
     }
 
+    //
+    //
+    //
+    //
+    //
+    //
+
+    //metodos get
+
+    @Test
+    @DisplayName("deve funcionar normalmente e status 200")
+    public void deveFuncionarNormalmenteeStatus200()throws Exception {
+
+        when(clienteService.buscarCliente(1L)).thenReturn(clienteResponseDTO);
+
+        mockMvc.perform(
+                get("/cliente/buscar/{id}",1L)
+        ).andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.nome").value("Willian"))
+                .andExpect(jsonPath("$.cpfcnpj").value("11199004928"));
 
 
+
+
+        verify(clienteService).buscarCliente(1L);
+    }
 
 
     @Test
