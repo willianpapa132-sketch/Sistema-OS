@@ -5,11 +5,15 @@ import jpa.repository.demo.cliente.dto.ClienteRequestDTO;
 import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
 import jpa.repository.demo.cliente.repository.ClienteRepository;
 
+import jpa.repository.demo.handler.BusinessException;
 import jpa.repository.demo.handler.NotFoundException;
+import jpa.repository.demo.ordemdeservico.entity.OrdemDeServico;
+import jpa.repository.demo.ordemdeservico.repository.OrdemDeServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,13 +22,22 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
+    @Autowired
+    OrdemDeServicoRepository ordemDeServicoRepository;
+
     public ClienteResponseDTO salvarCliente(ClienteRequestDTO clienteRequestDTO){
         Cliente cliente =  toEntity(clienteRequestDTO);
         Cliente clienteSalvo = clienteRepository.save(cliente);
         return toResponseDTO(clienteSalvo);
     }
     public ClienteResponseDTO mudarStatusCliente(ClienteRequestDTO clienteRequestDTO, Long id){
+
         Cliente clienteLocalizado = buscarClienteId(id);
+        List<OrdemDeServico> ordemDosCliente = new ArrayList<>();
+        ordemDosCliente = ordemDeServicoRepository.findByCliente_Id(clienteLocalizado.getId());
+        if(ordemDosCliente != null){
+            throw new BusinessException("cliente não pode ser desativado, com OS");
+        }
         clienteLocalizado.setAtivo(clienteRequestDTO.isAtivo());
         Cliente clienteSalvo = clienteRepository.save(clienteLocalizado);
         return toResponseDTO(clienteSalvo);
