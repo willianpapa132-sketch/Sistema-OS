@@ -35,7 +35,7 @@ public class ClienteControler {
     }
 
     @GetMapping("/buscar/{id}")
-    public ClienteResponseDTO buscarcliente(@PathVariable Long id) throws Exception {
+    public ClienteResponseDTO buscarcliente(@PathVariable Long id)   {
         return clienteService.buscarCliente(id);
     }
 
