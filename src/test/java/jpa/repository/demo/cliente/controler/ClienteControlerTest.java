@@ -177,10 +177,7 @@ class ClienteControlerTest {
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.nome").value("Willian"))
                 .andExpect(jsonPath("$.cpfcnpj").value("11199004928"));
-
-
-
-
+        
         verify(clienteService).buscarCliente(1L);
     }
 
