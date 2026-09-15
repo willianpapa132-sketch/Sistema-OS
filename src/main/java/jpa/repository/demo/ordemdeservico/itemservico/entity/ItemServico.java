@@ -1,4 +1,4 @@
-package jpa.repository.demo.itemservico.entity;
+package jpa.repository.demo.ordemdeservico.itemservico.entity;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Column;

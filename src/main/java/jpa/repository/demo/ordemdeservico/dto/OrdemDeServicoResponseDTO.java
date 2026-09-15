@@ -2,7 +2,7 @@ package jpa.repository.demo.ordemdeservico.dto;
 
 import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
 import jpa.repository.demo.equipamento.dto.EquipamentoResponseDTO;
-import jpa.repository.demo.itemservico.dto.ItemServicoResponseDTO;
+import jpa.repository.demo.ordemdeservico.itemservico.dto.ItemServicoResponseDTO;
 import jpa.repository.demo.tecnico.dto.TecnicoResponseDTO;
 import jpa.repository.demo.ordemdeservico.entity.StatusOS;
 import lombok.AllArgsConstructor;

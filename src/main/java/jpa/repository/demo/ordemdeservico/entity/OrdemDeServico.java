@@ -5,7 +5,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import jpa.repository.demo.cliente.entity.Cliente;
 import jpa.repository.demo.equipamento.entity.Equipamento;
-import jpa.repository.demo.itemservico.entity.ItemServico;
+import jpa.repository.demo.ordemdeservico.itemservico.entity.ItemServico;
 import jpa.repository.demo.tecnico.entity.Tecnico;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

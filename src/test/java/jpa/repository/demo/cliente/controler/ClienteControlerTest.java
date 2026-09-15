@@ -118,7 +118,6 @@ class ClienteControlerTest {
     //
     //
     //
-
     //testes do put
 
     @Test
@@ -137,6 +136,9 @@ class ClienteControlerTest {
 
         verify(clienteService).mudarStatusCliente(any(ClienteRequestDTO.class), eq(1L));
     }
+
+
+
     @Test
     @DisplayName("deve lançar o Bussines exception no service")
     public void deveBussinesExceptionNoService()throws Exception {
@@ -162,7 +164,6 @@ class ClienteControlerTest {
     //
     //
     //
-
     //metodos get
 
     @Test
@@ -177,7 +178,7 @@ class ClienteControlerTest {
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.nome").value("Willian"))
                 .andExpect(jsonPath("$.cpfcnpj").value("11199004928"));
-        
+
         verify(clienteService).buscarCliente(1L);
     }
 

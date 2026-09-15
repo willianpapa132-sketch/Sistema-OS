@@ -1,6 +1,6 @@
-package jpa.repository.demo.itemservico.repository;
+package jpa.repository.demo.ordemdeservico.itemservico.repository;
 
-import jpa.repository.demo.itemservico.entity.ItemServico;
+import jpa.repository.demo.ordemdeservico.itemservico.entity.ItemServico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 

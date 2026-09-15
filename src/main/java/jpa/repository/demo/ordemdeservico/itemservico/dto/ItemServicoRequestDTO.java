@@ -1,4 +1,4 @@
-package jpa.repository.demo.itemservico.dto;
+package jpa.repository.demo.ordemdeservico.itemservico.dto;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jpa.repository.demo.servico.entity.Servico;

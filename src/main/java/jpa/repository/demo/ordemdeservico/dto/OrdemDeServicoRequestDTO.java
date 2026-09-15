@@ -3,7 +3,7 @@ package jpa.repository.demo.ordemdeservico.dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
-import jpa.repository.demo.itemservico.dto.ItemServicoRequestDTO;
+import jpa.repository.demo.ordemdeservico.itemservico.dto.ItemServicoRequestDTO;
 import jpa.repository.demo.ordemdeservico.entity.StatusOS;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,9 +36,8 @@ public class OrdemDeServicoRequestDTO {
     @NotNull(message = "Status e obrigatorio")
     private StatusOS status;
 
-    @PositiveOrZero(message = "Valor pago nao pode ser negativo")
     private BigDecimal valorPago;
 
-    @Valid
+
     private List<ItemServicoRequestDTO> itens;
 }
