@@ -26,9 +26,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -123,7 +123,7 @@ class OrdemDeServicoControlerTest {
                 1L, 1L, servicoResponseDTO1, 3, new BigDecimal("200.60")
         );
         ItemServicoResponseDTO itemServicoResponseDTO2 = new ItemServicoResponseDTO(
-                2L, 2L, servicoResponseDTO2, 4, new BigDecimal("300.60")
+                2L, 1L, servicoResponseDTO2, 4, new BigDecimal("300.60")
         );
 
         itemServicoResponseDTOS.add(itemServicoResponseDTO1);
@@ -142,7 +142,7 @@ class OrdemDeServicoControlerTest {
         ordemDeServicoResponseDTO.setItens(itemServicoResponseDTOS);
 
     }
-
+    ////////////////////////////////////// post ->
     @Test
     @DisplayName("padrã de salvamento, deve retornar 200")
     void cadastrarOrdem() throws Exception {
@@ -157,13 +157,80 @@ class OrdemDeServicoControlerTest {
                         .content(objectMapper.writeValueAsString(ordemDeServicoRequestDTO))
         )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1L));
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.status").value("APROVADA"))
+                .andExpect(jsonPath("$.cliente.id").value(1L))
+                .andExpect(jsonPath("$.cliente.nome").value("willian"))
+                .andExpect(jsonPath("$.cliente.cpfcnpj").value("11199004928"))
+                .andExpect(jsonPath("$.cliente.telefone").value("41999265298"))
+                .andExpect(jsonPath("$.cliente.email").value("willianpapa132@gmail.com"))
+                .andExpect(jsonPath("$.cliente.ativo").value(true))
+                .andExpect(jsonPath("$.dataFinalizacao").isEmpty())
+                .andExpect(jsonPath("$.observacoes").value("deve ser cobrado a troca mais a peça do cliente"));
+
+        verify(ordemDeServicoService).salvarOrdem(any(OrdemDeServicoRequestDTO.class));
     }
 
     @Test
-    void atualizarOrdem() {
+    @DisplayName("vai lança excessão no valid de criação ")
+    void deveQuebrarNoValid() throws Exception {
+
+        ordemDeServicoRequestDTO.setClienteid(null);
+
+        mockMvc.perform(
+                post("/ordemdeservico")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(ordemDeServicoRequestDTO))
+        )
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.mensagem").value("clienteid: Cliente e obrigatorio"));
+
+        verifyNoInteractions(ordemDeServicoService);
     }
 
+    @Test
+    @DisplayName("vai lança excessão no valid de criação nos itens")
+    void deveQuebrarNoValidDoItem() throws Exception {
+
+        for (ItemServicoRequestDTO itemServicoRequestDTO : ordemDeServicoRequestDTO.getItens()){
+            itemServicoRequestDTO.setQuantidade(-1);
+            break;
+        }
+
+        mockMvc.perform(
+                        post("/ordemdeservico")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(ordemDeServicoRequestDTO))
+                )
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.mensagem")
+                        .value("itens[0].quantidade: Quantidade deve ser maior que zero"));
+
+        verifyNoInteractions(ordemDeServicoService);
+    }
+    ///////////////////////////////////////////////////////////
+
+
+    ////////////////////////////// put ->
+    @Test
+    @DisplayName("atualizar e retornar o status como 200")
+    void atualizarOrdem() throws Exception {
+
+
+        when(ordemDeServicoService.atualizarOrdem(any(OrdemDeServicoRequestDTO.class), eq(1L))).thenReturn(ordemDeServicoResponseDTO);
+
+
+        mockMvc.perform(
+                put("/ordemdeservico/atualizar/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(ordemDeServicoRequestDTO))
+        )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.cliente.nome").value("willian"));
+    }
+
+
+    ///////////////////////////////////////
     @Test
     void fecharOrdem() {
     }
