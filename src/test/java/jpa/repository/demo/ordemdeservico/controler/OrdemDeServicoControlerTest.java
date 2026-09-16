@@ -142,6 +142,9 @@ class OrdemDeServicoControlerTest {
         ordemDeServicoResponseDTO.setItens(itemServicoResponseDTOS);
 
     }
+
+
+
     ////////////////////////////////////// post ->
     @Test
     @DisplayName("padrã de salvamento, deve retornar 200")
@@ -226,11 +229,41 @@ class OrdemDeServicoControlerTest {
                         .content(objectMapper.writeValueAsString(ordemDeServicoRequestDTO))
         )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.cliente.nome").value("willian"));
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.status").value("APROVADA"))
+                .andExpect(jsonPath("$.cliente.id").value(1L))
+                .andExpect(jsonPath("$.cliente.nome").value("willian"))
+                .andExpect(jsonPath("$.cliente.cpfcnpj").value("11199004928"))
+                .andExpect(jsonPath("$.cliente.telefone").value("41999265298"))
+                .andExpect(jsonPath("$.cliente.email").value("willianpapa132@gmail.com"))
+                .andExpect(jsonPath("$.cliente.ativo").value(true))
+                .andExpect(jsonPath("$.dataFinalizacao").isEmpty())
+                .andExpect(jsonPath("$.observacoes").value("deve ser cobrado a troca mais a peça do cliente"));
+
     }
 
+    @Test
+    @DisplayName("vai quebrar por ir com item vazio, na parte do valid do item")
+    void deveQuebrarPorItemVazio() throws Exception {
 
+        ordemDeServicoRequestDTO
+                .getItens()
+                .get(0)
+                .setServicoid(null);
+
+        mockMvc.perform(
+                put("/ordemdeservico/atualizar/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(ordemDeServicoRequestDTO))
+        )
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.mensagem").value("itens[0].servicoid: Servico e obrigatorio"));
+
+    }
     ///////////////////////////////////////
+
+
+
     @Test
     void fecharOrdem() {
     }
