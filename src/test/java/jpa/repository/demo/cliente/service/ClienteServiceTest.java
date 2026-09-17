@@ -5,12 +5,15 @@ import jpa.repository.demo.cliente.dto.ClienteResponseDTO;
 import jpa.repository.demo.cliente.entity.Cliente;
 import jpa.repository.demo.cliente.repository.ClienteRepository;
 import jpa.repository.demo.handler.NotFoundException;
+import jpa.repository.demo.ordemdeservico.repository.OrdemDeServicoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -20,6 +23,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class ClienteServiceTest {
 
+
+    @Mock
+    OrdemDeServicoRepository ordemDeServicoRepository;
 
     @Mock
     ClienteRepository clienteRepository;
@@ -84,8 +90,9 @@ class ClienteServiceTest {
         when(clienteRepository.findById(1L)).thenReturn(Optional.of(clienteSalvo));
         when(clienteRepository.save(any(Cliente.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
+        when(ordemDeServicoRepository.findByCliente_Id(1L)).thenReturn(null);
 
-        ClienteResponseDTO clienteResponseDTO = clienteService.mudarStatusCliente(requestDTO, 1l);
+        ClienteResponseDTO clienteResponseDTO = clienteService.mudarStatusCliente(requestDTO, 1L);
         assertNotNull(clienteResponseDTO);
         assertEquals("willian",clienteResponseDTO.getNome());
         assertFalse(clienteResponseDTO.getAtivo());
