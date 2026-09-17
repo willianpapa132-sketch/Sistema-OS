@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface OrdemDeServicoRepository extends JpaRepository <OrdemDeServico, Long> {
     List<OrdemDeServico> findByCliente_Id(Long id);
+    Boolean filterByCliente_Id(Long id);
 }
