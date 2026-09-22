@@ -12,7 +12,7 @@ import java.util.List;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     @Query(""" 
-        SELECT cli.nome AS nome, cli.email AS email, cli.cpfcnpj AS cpfCnpj
+        SELECT cli.nome AS nome, cli.email AS email, cli.cpfcnpj AS cpfcnpj
         FROM Cliente cli
         """)
     List<ClienteJPQL> buscaDeDadosSimples ();

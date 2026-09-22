@@ -13,7 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
+
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,7 +26,7 @@ class ClienteServiceTest {
 
     @Mock
     OrdemDeServicoRepository ordemDeServicoRepository;
-
+    
     @Mock
     ClienteRepository clienteRepository;
 
@@ -90,7 +90,7 @@ class ClienteServiceTest {
         when(clienteRepository.findById(1L)).thenReturn(Optional.of(clienteSalvo));
         when(clienteRepository.save(any(Cliente.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
-        when(ordemDeServicoRepository.findByCliente_Id(1L)).thenReturn(null);
+        when(ordemDeServicoRepository.existsByCliente_id(1L)).thenReturn(false);
 
         ClienteResponseDTO clienteResponseDTO = clienteService.mudarStatusCliente(requestDTO, 1L);
         assertNotNull(clienteResponseDTO);

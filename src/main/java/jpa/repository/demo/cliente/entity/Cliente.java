@@ -51,4 +51,5 @@ public class Cliente {
         this.ativo = ativo;
         this.cpfcnpj = cpfcnpj;
     }
+
 }

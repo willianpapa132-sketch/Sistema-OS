@@ -29,7 +29,7 @@ public class ClienteService {
 
         Cliente clienteLocalizado = buscarClienteId(id);
 
-        if(ordemDeServicoRepository.filterByCliente_Id(clienteLocalizado.getId())){
+        if(ordemDeServicoRepository.existsByCliente_id(clienteLocalizado.getId())){
             throw new BusinessException("cliente não pode ser desativado, com OS");
         }
         clienteLocalizado.setAtivo(clienteRequestDTO.isAtivo());
